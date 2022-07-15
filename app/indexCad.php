@@ -23,7 +23,7 @@
     <?php } ?>
   </div>
   <h1>Faça seu Cadastro</h1>
-  <form action="src/processCad.php" method="post">
+  <form action="core/processCad.php" method="post">
     <div class="contreinner">
       <label for="Nome">Nome</label>
       <input type="text" name="nome" class="but" require>
