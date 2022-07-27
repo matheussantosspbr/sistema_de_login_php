@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../../lib/matheus/Database/config.php';
 
 
@@ -21,14 +21,22 @@ if (!empty($_POST)) {
 
 
       if (!($users == array())) {
-        header("Location: ../../index.php?msgSucesso=Logado com sucesso");
+        $_SESSION['usuario'] = $email;
+        $_SESSION['senha'] = $senha;
+        header("Location: ../painel.php");
+        exit();
       } else {
         header("Location: ../../index.php?msgErro=Email ou Senha invalida !");
+        exit();
       }
     } else {
       header("Location: ../../index.php?msgErro=Digite sua Senha !");
+      exit();
     }
   } else {
     header("Location: ../../index.php?msgErro=Digite Seu Email !");
+    exit();
   }
 }
+
+exit();
