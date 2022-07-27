@@ -2,8 +2,8 @@
 session_start();
 require_once '../../lib/matheus/Database/config.php';
 
-
 if (!empty($_POST)) {
+  // verificação se os campos email e senha está vazia
   if (!empty($_POST['email'])) {
     if (!empty($_POST['senha'])) {
       $email = $_POST['email'];
