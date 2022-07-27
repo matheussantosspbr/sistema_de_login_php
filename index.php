@@ -10,12 +10,16 @@
 </head>
 
 <body>
+  
+  <!-- Contreinner de Alertas -->
   <div class="rescontreinner">
+    <!-- Caso apareça uma mensagem de erro via GET  -->
     <?php if (!empty($_GET['msgErro'])) { ?>
       <div class="alertErro">
         <?php echo $_GET['msgErro'] ?>
       </div>
     <?php } ?>
+    <!-- Caso apareça uma mensagem de Sucesso via GET  -->
     <?php if (!empty($_GET['msgSucesso'])) { ?>
       <div class="alertSucess">
         <?php echo $_GET['msgSucesso'] ?>
