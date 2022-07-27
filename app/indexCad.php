@@ -23,7 +23,7 @@
     <?php } ?>
   </div>
   <h1>Faça seu Cadastro</h1>
-  <form action="core/processCad.php" method="post">
+  <form action="core/processCad.php" method="post" enctype="multipart/form-data">
     <div class="contreinner">
       <label for="Nome">Nome</label>
       <input type="text" name="nome" class="but" require>
@@ -41,7 +41,7 @@
       <input type="password" name="confSenha" class="but" minlength="8" require>
     </div>
     <div class="contreinnerBut">
-      <a href="index.php">Cancelar</a>
+      <a href="../index.php">Cancelar</a>
       <input type="submit" value="Cadastrar" name="submit">
     </div>
   </form>
