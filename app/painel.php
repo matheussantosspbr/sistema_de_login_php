@@ -1,22 +1,7 @@
 <?php
 session_start();
-require_once '../lib/matheus/Database/config.php';
+// Verificação de Login
 include('core/verificaLogin.php');
-$stmt = $pdo->prepare(
-  "SELECT * FROM usuarios WHERE email = ? AND senha = ?"
-);
-
-
-$stmt->bindParam(1, $_SESSION['usuario']);
-
-$stmt->bindParam(2, $_SESSION['senha']);
-
-$stmt->execute();
-
-$users = $stmt->fetchAll();
-
-
-
 ?>
 
 <!DOCTYPE html>
