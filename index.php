@@ -26,6 +26,7 @@
       </div>
     <?php } ?>
   </div>
+  <h1>Desenvolvido pelo Dev. Matheus Santos</h1>
   <h1>Faça seu Login</h1>
   <form action="app/core/processLog.php" method="post">
     <div class="contreinner">
