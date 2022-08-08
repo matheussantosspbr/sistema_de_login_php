@@ -38,8 +38,7 @@ if (!empty($_POST)) {
 
                   // Para caso ouver algum erro durante o processo de cadastro
                 } catch (PDOException $e) {
-                  header("Location: ../indexCad.php?msgErro=Erro !");
-                  // echo $e;
+                  header("Location: ../indexCad.php?msgErro=O Email já existe !");
                 }
               } else {
                 header("Location: ../indexCad.php?msgErro=As senhas não se coincidem");
