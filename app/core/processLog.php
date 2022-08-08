@@ -30,7 +30,7 @@ if (!empty($_POST)) {
           header("Location: ../../index.php?msgErro=Email ou Senha invalida !");
           exit();
         }
-      } catch (\Throwable $e) {
+      } catch (PDOException $e) {
         header("Location: ../../index.php?msgErro=Erro !");
       }
     } else {
