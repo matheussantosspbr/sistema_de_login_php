@@ -15,30 +15,31 @@ if (!empty($_POST)) {
               if ($_POST['senha'] == $_POST['confSenha']) {
                 // se estiver tudo certo, fazer o processo de cadastro
                 try {
+
+                  //query de inserção de dados 
                   $sql = "INSERT INTO usuarios
-                                (nome, sobrenome,data_nascimento,email, senha, foto_perfil)
+                                (nome, sobrenome, data_nascimento,email, senha)
                               VALUES
-                                (:nome, :sobrenome, :datanasc,:email, :senha, :insertImg)";
+                              (?,?,?,?,?)";
+
                   $stmt = $pdo->prepare($sql);
 
-                  $dados = array(
-                    ':nome' => $_POST['nome'],
-                    ':sobrenome' => $_POST['sobrenome'],
-                    ':datanasc' => $_POST['datanasc'],
-                    ':email' => $_POST['email'],
-                    ':senha' => md5($_POST['senha']),
-                    ':insertImg' => ($_FILES['insertImg'])
-                  );
+                  // substituir os ? pelos valores dos inputs
+                  $stmt->bindValue(1, $_POST['nome']);
+                  $stmt->bindValue(2, $_POST['sobrenome']);
+                  $stmt->bindValue(3, $_POST['datanasc']);
+                  $stmt->bindValue(4, $_POST['email']);
+                  $stmt->bindValue(5, md5($_POST['senha']));
+
                   // execultar cadastro
-                  if ($stmt->execute($dados)) {
+                  if ($stmt->execute()) {
                     header("Location: ../../index.php?msgSucesso=Cadastro realizado com sucesso");
-                  } else {
-                    header("Location: ../indexCad.php?msgErro=Erro de Acesso");
                   }
 
-                  // caso der erro, siginifica que o email já existe
+                  // Para caso ouver algum erro durante o processo de cadastro
                 } catch (PDOException $e) {
-                  header("Location: ../indexCad.php?msgErro=Email já Existente !");
+                  header("Location: ../indexCad.php?msgErro=Erro !");
+                  // echo $e;
                 }
               } else {
                 header("Location: ../indexCad.php?msgErro=As senhas não se coincidem");
